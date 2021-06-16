@@ -7,6 +7,7 @@ source activate remind_proj
 cd ${PROJ_ROOT}/image_classification_experiments
 
 IMAGE_DIR=/media/tyler/nvme_drive/data/ImageNet2012
+
 EXPT_NAME=remind_imagenet
 GPU=0
 

@@ -63,7 +63,7 @@ class REMINDModel(object):
                                                                                   gamma=lr_gamma)
         else:
             self.lr_scheduler_per_class = None
-
+        
         # setup parameters
         self.num_classes = num_classes
         self.lr_mode = lr_mode
@@ -118,6 +118,7 @@ class REMINDModel(object):
         start_time = time.time()
         total_loss = utils.CMA()
         c = 0
+        
         for batch_images, batch_labels, batch_item_ixs in curr_loader:
 
             # get features from G and latent codes from PQ

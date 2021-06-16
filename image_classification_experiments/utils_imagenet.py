@@ -8,8 +8,7 @@ from torch.utils.data import Dataset
 
 def get_imagenet_indices(labels, min_val, max_val):
     return filter_by_class(labels, min_val, max_val)
-
-
+    
 def get_indices(ix_dir, min_class, max_class, training, dataset_name):
     train_labels = np.load(os.path.join(ix_dir, '{}_indices/{}_train_labels.npy'.format(dataset_name, dataset_name)))
     val_labels = np.load(os.path.join(ix_dir, '{}_indices/{}_val_labels.npy'.format(dataset_name, dataset_name)))
@@ -20,6 +19,8 @@ def get_indices(ix_dir, min_class, max_class, training, dataset_name):
         curr_idx = get_imagenet_indices(val_labels, min_val=min_class, max_val=max_class)
         curr_labels = val_labels[np.array(curr_idx)]
     return curr_idx, curr_labels
+
+
 
 
 def filter_by_class(labels, min_class, max_class):

@@ -33,6 +33,14 @@ class CMA(object):
         self.N = self.N + 1
 
 
+# 
+
+def mod_acc():
+    '''
+        Modify Accuracy term to std. accuracy for the XRayVision tasks
+    '''
+    raise NotImplementedError()
+
 def accuracy(output, target, topk=(1,), output_has_class_ids=False):
     """Computes the accuracy over the k top predictions for the specified values of k"""
     if not output_has_class_ids:
@@ -56,7 +64,6 @@ def accuracy(output, target, topk=(1,), output_has_class_ids=False):
             res.append(correct_k.mul_(100.0 / batch_size).item())
         return res
 
-
 def save_predictions(y_pred, min_class_trained, max_class_trained, save_path, suffix='', order=None):
     if order is not None:
         name = 'core50_' + order + '_preds_min_trained_' + str(min_class_trained) + '_max_trained_' + str(
@@ -64,7 +71,6 @@ def save_predictions(y_pred, min_class_trained, max_class_trained, save_path, su
     else:
         name = 'preds_min_trained_' + str(min_class_trained) + '_max_trained_' + str(max_class_trained) + suffix
     torch.save(y_pred, save_path + '/' + name + '.pth')
-
 
 def save_accuracies(accuracies, min_class_trained, max_class_trained, save_path, suffix='', order=None):
     if order is not None:
